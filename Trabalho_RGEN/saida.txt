@@ -1,0 +1,4 @@
+Tipo_do_dado:char;
+(ovo);
+(oarracam);
+(etacaba);
