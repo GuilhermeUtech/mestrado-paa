@@ -11,20 +11,17 @@ int criarTipoGenerico(GENERICO ** vetor, char * tipo, int tamanho, char * dados,
             (*vetor)->dados = malloc(sizeof(int));
             (*vetor)->dados = inverterInteiro(atoi(dados));
             (*vetor)->tipo = tipo;
-            
         } else {
-
             *vetor = realloc(*vetor, sizeof(GENERICO) * i);
             (*vetor+(i-1))->tamanho = tamanho;
             (*vetor+(i-1))->dados = malloc(sizeof(int));
             (*vetor+(i-1))->dados = inverterInteiro(atoi(dados));
             (*vetor+(i-1))->tipo = tipo;
-        
         }
 
     } else {
-        if(i == 0){ 
 
+        if(i == 0){ 
             *vetor = malloc(sizeof(*vetor));
             (*vetor)->tamanho = strlen(dados);
             (*vetor)->dados = malloc(sizeof(char) * strlen(dados));
@@ -32,14 +29,11 @@ int criarTipoGenerico(GENERICO ** vetor, char * tipo, int tamanho, char * dados,
             (*vetor)->tipo = tipo;
 
         } else {
-
             *vetor = realloc(*vetor, sizeof(GENERICO) * i);
             (*vetor+(i-1))->tamanho = strlen(dados);
             (*vetor+(i-1))->dados = malloc(sizeof(char) * strlen(dados));
             memcpy((*vetor+(i-1))->dados, inverterString(dados), strlen(dados));
             (*vetor+(i-1))->tipo = tipo;
-            
-
         }
     }
 	
@@ -53,13 +47,12 @@ int criarTipoGenerico(GENERICO ** vetor, char * tipo, int tamanho, char * dados,
 char * inverterString(char *s){
 
     int length = strlen(s) ;
-    int c, i, j;
+    int aux, repasse;
 
-    for (i = 0, j = length - 1; i < j; i++, j--)
-    {
-        c = s[i];
-        s[i] = s[j];
-        s[j] = c;
+    for (int i=0, repasse=length-1; i<repasse; i++, repasse--){
+        aux = s[i];
+        s[i] = s[repasse];
+        s[repasse] = aux;
     }
 
     return s;
@@ -81,19 +74,11 @@ int inverterInteiro(int dados){
 void printarSaidaFormatada(GENERICO ** vetor, int i, char * tipo){
     if(strcmp(tipo, "int") == 0){
         for(int j=(i-2); j>=0; j--){
-            if(j==0){
-                printf("(%d);", (*vetor+j)->dados);
-            } else {
-                printf("(%d);\n", (*vetor+j)->dados);
-            }    
+            printf("(%d);\n", (*vetor+j)->dados); 
         }
     } else {
         for(int j=(i-2); j>=0; j--){
-            if(j==0){
-                printf("(%s);", (*vetor+j)->dados);
-            } else {
-                printf("(%s);\n", (*vetor+j)->dados);
-            }
+            printf("(%s);\n", (*vetor+j)->dados);
         }
     }
 }
