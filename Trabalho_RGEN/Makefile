@@ -2,7 +2,7 @@ SHELL=/bin/sh
 CC=gcc
 CFLAGS=-Wall -O3
 NOME=rgen
-ENTRADA=entrada.txt
+ENTRADA=entry.txt
 MAIN=main
 
 default: build

@@ -37,6 +37,7 @@ int main (int argc, char **argv) {
                 }
 
             }
+            //se eu printar sem criatTipoGenerico eu terei um problema de robustez (?!)
             printarSaidaFormatada(&vetor, i, tipo);
 
         } else {
